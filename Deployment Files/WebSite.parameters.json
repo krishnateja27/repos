@@ -3,16 +3,16 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "webSiteName": {
-      "value": "randomw1"
+      "value": "AzureFITest10"
     },
-    "storageaccountname": {
+    "storageAccountName": {
       "value": "examplestorageaccount"
     },
     "ClientId": {
-      "value": "6b80f7db-7f71-4ef8-b412-9b2019a18d18"
+      "value": "34361fe4-20c7-44f5-b25c-2de77646f9fa"
     },
     "ClientSecretKey": {
-      "value": "PsilcW9hQPNYQi9raC4t7Mi/kCstwLdEcWcTU+0HLD4="
+      "value": "XP4esH3vogfpoC+yMalLD0z8Le8/VOpshWQXbqRZf7A="
     },
     "TenantId": {
       "value": "fa23f4b5-cee9-4c9e-a774-d31b0f10c151"

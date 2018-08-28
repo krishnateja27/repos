@@ -1,8 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Azure.Management.ResourceManager.Fluent;
+using Microsoft.Azure.Management.ResourceManager.Fluent.Authentication;
+using Microsoft.Azure.Management.ResourceManager.Fluent.Models;
+using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Table;
 
 namespace Test
 {
@@ -10,13 +17,7 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            string date = "12/10/2017 12:52:13+0000";
-            var toDateTimeOffset = DateTimeOffset.ParseExact(date.Split('+')[0], "dd/MM/yyyy HH:mm:ss",
-                    System.Globalization.CultureInfo.InvariantCulture);
-            Console.WriteLine(toDateTimeOffset.ToLocalTime().ToString());
-            Console.WriteLine($"This is a new operator");
-            Console.WriteLine("Press a key to continue");
-            Console.ReadLine();
+
         }
     }
 }
