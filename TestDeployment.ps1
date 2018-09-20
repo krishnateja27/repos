@@ -18,5 +18,5 @@ $ClientSecret = $JsonParameters.parameters.clientSecretKey.value
 Write-Host $ClientSecret
 $TenantId = $JsonParameters.parameters.tenantID.value
 Write-Host $TenantId
-$SubscriptionId = (Get-AzureRmContext).Subscription.SubscriptionId
+$SubscriptionId = (Get-AzureRmSubscription).SubscriptionId
 Write-Host $SubscriptionId

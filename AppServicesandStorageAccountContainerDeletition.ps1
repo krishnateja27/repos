@@ -1,13 +1,13 @@
 ﻿#Powershell script to delete webapp,functionapp,storageartifacts container file given corresponding webapp,functionapp,storageaccountname.
 
 param(
-[string] $ResourceGroupName = 'ExampleResourceGroupARM',
-[string] $StorageAccountName = 'checkstatus',
-[string] $websiteName = 'randomname9',
+[string] $ResourceGroupName = 'AFISOW',
+[string] $StorageAccountName = 'afisowsa',
+[string] $websiteName = 'afisowwa',
 [string] $CommonName = 'azurefi',
 [string] $StorageContainerName = $ResourceGroupName.ToLowerInvariant() + "-stageartifacts",
-[string] $ClientId = '6b80f7db-7f71-4ef8-b412-9b2019a18d18',
-[string] $ClientSecret = 'PsilcW9hQPNYQi9raC4t7Mi/kCstwLdEcWcTU+0HLD4=',
+[string] $ClientId = '34361fe4-20c7-44f5-b25c-2de77646f9fa',
+[string] $ClientSecret = 'XP4esH3vogfpoC+yMalLD0z8Le8/VOpshWQXbqRZf7A=',
 [string] $TenantId = 'fa23f4b5-cee9-4c9e-a774-d31b0f10c151',
 [string] $SubscriptionId = '0b349e3e-9da1-454f-941b-1f992729a1ff'
 )
@@ -48,7 +48,7 @@ function Main{
              {
                  Write-Host "Deleting the website."
                  #Deleting the webapp and run the code
-                 Remove-AzureRmWebApp -ResourceGroupName $ResourceGroupName -Name $websiteName
+                 Get-AzureRmWebApp -ResourceGroupName $ResourceGroupName -Name $websiteName
                   Write-Host "Deleted the website."
              }
         }
@@ -73,12 +73,12 @@ function Main{
        if(!(Get-AzureRmWebApp -ResourceGroupName $ResourceGroupName -Name $functionAppName -ErrorAction Stop).DefaultHostName){}
        else
        {
-             $userOption = Read-Host "Do you want to delete the existing webapp and upload the new one? Enter(Y/N)"  
+             $userOption = Read-Host "Do you want to delete the existing functionapp and upload the new one? Enter(Y/N)"  
              if($userOption.ToLower() -eq 'y')
              {
                 Write-Host "Deleting the functionapp."
                 #Deleting the functionapp and run the code.
-                Remove-AzureRmWebApp -ResourceGroupName $ResourceGroupName -Name $functionAppName
+                Get-AzureRmWebApp -ResourceGroupName $ResourceGroupName -Name $functionAppName
                 Write-Host "Deleted the functionapp."
              }
        }
@@ -111,7 +111,7 @@ function Main{
                 {
                     Write-Host "Deleting the container."
                     #Delete the container and run the code.
-                    Remove-AzureStorageContainer -Context $storageContext -Name $StorageContainerName -ErrorAction Stop
+                    Get-AzureStorageContainer -Context $storageContext -Name $StorageContainerName -ErrorAction Stop
                     Write-Host "Deleted the container."  
                 }
            }

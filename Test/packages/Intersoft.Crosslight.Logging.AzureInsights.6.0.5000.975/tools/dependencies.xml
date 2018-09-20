@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<spec>
+  <dependencies TargetProject="Net45">
+    <dependency PackageName="Newtonsoft.Json" Version="6.0.4" Pre=""/>
+    <dependency PackageName="Microsoft.ApplicationInsights" Version="0.17.0" Pre=""/>
+    <dependency PackageName="Microsoft.ApplicationInsights.PerfCounterCollector" Version="0.17.0" Pre=""/>
+    <dependency PackageName="Microsoft.ApplicationInsights.DependencyCollector" Version="0.17.0" Pre=""/>
+    <dependency PackageName="Microsoft.ApplicationInsights.Web" Version="0.17.0" Pre=""/>
+    <dependency PackageName="Microsoft.ApplicationInsights.Web.TelemetryChannel" Version="0.17.0" Pre=""/>
+    <dependency PackageName="Microsoft.ApplicationInsights.Agent.Intercept" Version="0.17.0" Pre=""/>
+  </dependencies>
+</spec>
