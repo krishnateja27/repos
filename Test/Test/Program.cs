@@ -33,16 +33,74 @@ using Microsoft.Azure.Management.Resources;
                 */
 namespace Test
 {
+    class JsonFile
+    {
+        public string ResourceGroupName { get; set; }
+        public string ResourceName { get; set; }
+        //JsonFile() { }
+    }
     class Program
     {
+        private const int V = 100;
+        
         static void Main(string[] args)
         {
-            bool somename = null;
-            if (somename)
-                Console.WriteLine("true");
+            List<string> scheduleEntitiesResourceIds = new List<string>();
+            scheduleEntitiesResourceIds.Add("/subscriptions/0b349e3e-9da1-454f-941b-1f992729a1ff/resourceGroups/testazure2/providers/Microsoft.Compute/virtualMachines/StandaloneVM1");
+            scheduleEntitiesResourceIds.Add("/subscriptions/0b349e3e-9da1-454f-941b-1f992729a1ff/resourceGroups/testazure2/providers/Microsoft.Compute/virtualMachines/StandaloneVM2");
+            scheduleEntitiesResourceIds.Add("/subscriptions/0b349e3e-9da1-454f-941b-1f992729a1ff/resourceGroups/testazure2/providers/Microsoft.Compute/virtualMachines/StandaloneVM1");
+            scheduleEntitiesResourceIds.Add("/subscriptions/0b349e3e-9da1-454f-941b-1f992729a1ff/resourceGroups/testazure2/providers/Microsoft.Compute/virtualMachines/StandaloneVM2");
+            scheduleEntitiesResourceIds.Add("/subscriptions/0b349e3e-9da1-454f-941b-1f992729a1ff/resourceGroups/testazure2/providers/Microsoft.Compute/virtualMachines/StandaloneVM2");
+
+            //scheduleEntitiesResourceIds.Add("/subscriptions/0b349e3e-9da1-454f-941b-1f992729a1ff/resourceGroups/testazure2/providers/Microsoft.Compute/virtualMachines/StandaloneVM3");
+            var jsonFile1 = new JsonFile
+            {
+                ResourceGroupName = "testazure2",
+                ResourceName = "StandaloneVM1"
+            };
+            var jsonFile2 = new JsonFile
+            {
+                ResourceGroupName = "testazure2",
+                ResourceName = "StandaloneVM2"
+            };
+            var jsonFile3 = new JsonFile
+            {
+                ResourceGroupName = "testazure2",
+                ResourceName = "StandaloneVM3"
+            };
+            var resultsSet = new List<JsonFile>();
+            resultsSet.Add(jsonFile1);
+            resultsSet.Add(jsonFile2);
+            resultsSet.Add(jsonFile3);
+
+            var resultsSet1 = new List<JsonFile>();
+            if (scheduleEntitiesResourceIds.Count() != 0)
+            {
+                foreach (var result in resultsSet)
+                 {
+                     foreach (var Id in scheduleEntitiesResourceIds)
+                     {
+                         if ((Id.Contains(result.ResourceGroupName)) && (Id.Contains(result.ResourceName)))
+                         {
+                             resultsSet1.Add(result);
+                                break;
+                         }
+                     }
+                 }
+                 resultsSet = resultsSet.Except(resultsSet1).ToList();
+                 
+               // resultsSet1 = resultsSet.Where(x => (scheduleEntitiesResourceIds.Contains(x.ResourceGroupName) && scheduleEntitiesResourceIds.Contains(x.ResourceName))).ToList();
+               // resultsSet = resultsSet.Except(resultsSet1).ToList();
+            }
+            //resultsSet = resultsSet.Where(x => (scheduleEntitiesResourceIds.Contains(x.ResourceGroupName) && scheduleEntitiesResourceIds.Contains(x.ResourceName))).ToList();
             else
-                Console.WriteLine("false");
-            
+                resultsSet = resultsSet.ToList();
+            foreach (var result in resultsSet)
+            {
+                Console.WriteLine(result.ResourceGroupName);
+                Console.WriteLine(result.ResourceName);
+            }
+            Console.ReadLine();
         }
     }
 }
